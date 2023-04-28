@@ -2,6 +2,6 @@ build:
 	./gradlew clean build
 
 report:
-    ./gradlew jacocoTestReport
+	./gradlew jacocoTestReport
 
 .PHONY: build
