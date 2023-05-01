@@ -1,14 +1,17 @@
 package hexlet.code;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
-public class StringSchema {
-    private boolean isValid = true;
-    private Object data;
-    private Map<Method, Object> restrictions = new HashMap<>();
+public class StringSchema extends BaseSchema {
+
+    protected void basicCheck() {
+        isValid = data instanceof String || data == null;
+    }
+
+    public StringSchema() throws NoSuchMethodException {
+        Method method = StringSchema.class.getDeclaredMethod("basicCheck");
+        restrictions.put(method, new Object());
+    }
 
 
     public StringSchema required() throws NoSuchMethodException {
@@ -17,7 +20,7 @@ public class StringSchema {
         return this;
     }
 
-    private void requiredLogic() {
+    protected void requiredLogic() {
         isValid = data != null && !data.equals("");
     }
 
@@ -27,9 +30,14 @@ public class StringSchema {
         return this;
     }
 
-    private void minLengthLogic() throws NoSuchMethodException {
+    protected void minLengthLogic() throws NoSuchMethodException {
         Method key = StringSchema.class.getDeclaredMethod("minLengthLogic");
-        isValid = data.toString().length() >= (Integer) restrictions.get(key);
+        if (data == null) {
+            isValid = false;
+        } else {
+            isValid = data.toString().length() >= (Integer) restrictions.get(key);
+        }
+
     }
 
     public StringSchema contains(String substring) throws NoSuchMethodException {
@@ -38,7 +46,7 @@ public class StringSchema {
         return this;
     }
 
-    private void containsLogic() throws NoSuchMethodException {
+    protected void containsLogic() throws NoSuchMethodException {
         Method key = StringSchema.class.getDeclaredMethod("containsLogic");
         String substring = (String) restrictions.get(key);
         if (data == null) {
@@ -46,21 +54,6 @@ public class StringSchema {
         } else {
             isValid = data.toString().contains(substring);
         }
-    }
-
-    public boolean isValid(Object input) throws InvocationTargetException, IllegalAccessException {
-        this.data = input;
-        isValid = true;
-        if (!(this.data instanceof String) && data != null) {
-            return false;
-        }
-        for (Method restrictionMethod : restrictions.keySet()) {
-            if (!isValid) {
-                return false;
-            }
-            restrictionMethod.invoke(this);
-        }
-        return isValid;
     }
 }
 

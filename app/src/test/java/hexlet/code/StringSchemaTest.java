@@ -17,7 +17,6 @@ public class StringSchemaTest {
 
         assertThat(schema.isValid("")).isTrue();
         assertThat(schema.isValid(null)).isTrue();
-        assertThat(schema.isValid(null)).isTrue();
 
         schema.required();
 
@@ -37,7 +36,29 @@ public class StringSchemaTest {
         schema.contains("whatt");
 
         assertThat(schema.isValid("what does the fox say")).isFalse();
+
+        schema.contains("what");
+
+        assertThat(schema.isValid("what does the fox say")).isTrue();
     }
+
+    @Test
+    public void testStringSchema2() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Validator validator = new Validator();
+        StringSchema schema = validator.string();
+
+        assertThat(schema.isValid(null)).isTrue();
+        schema.minLength(4);
+        assertThat(schema.isValid(null)).isFalse();
+
+        schema.contains("df");
+        assertThat(schema.isValid(null)).isFalse();
+
+        assertThat(schema.isValid("dfe")).isFalse();
+        assertThat(schema.isValid("dfee")).isTrue();
+    }
+
+
 }
 
 
