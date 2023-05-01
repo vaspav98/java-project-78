@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.schemes.NumberSchema;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +17,6 @@ public class NumberSchemaTest {
         assertThat(schema.isValid('a')).isFalse();
         assertThat(schema.isValid(true)).isFalse();
         assertThat(schema.isValid("hexlet")).isFalse();
-
         assertThat(schema.isValid(5)).isTrue();
         assertThat(schema.isValid(null)).isTrue();
 

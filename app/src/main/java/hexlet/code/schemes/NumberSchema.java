@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.schemes;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.List;
 
 public class NumberSchema extends BaseSchema {
 
-    protected void basicCheck() {
-        isValid = this.data instanceof Integer || data == null;
+    void basicCheck() {
+        isValid = data instanceof Integer || data == null;
     }
 
     public NumberSchema() throws NoSuchMethodException {
@@ -22,7 +22,7 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    protected void requiredLogic() {
+    void requiredLogic() {
         isValid = data != null;
     }
 
@@ -32,7 +32,7 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    protected void positiveLogic() {
+    void positiveLogic() {
         isValid = data == null || (int) data > 0;
     }
 
@@ -43,7 +43,7 @@ public class NumberSchema extends BaseSchema {
         return this;
     }
 
-    protected void rangeLogic() throws NoSuchMethodException {
+    void rangeLogic() throws NoSuchMethodException {
         Method key = NumberSchema.class.getDeclaredMethod("rangeLogic");
         List<Integer> range = (List<Integer>) restrictions.get(key);
         int min = range.get(0);

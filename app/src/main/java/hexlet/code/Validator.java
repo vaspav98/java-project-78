@@ -1,5 +1,9 @@
 package hexlet.code;
 
+import hexlet.code.schemes.MapSchema;
+import hexlet.code.schemes.NumberSchema;
+import hexlet.code.schemes.StringSchema;
+
 public class Validator {
 
     public StringSchema string() throws NoSuchMethodException {
@@ -10,6 +14,7 @@ public class Validator {
         return new NumberSchema();
     }
 
-
-
+    public MapSchema map() throws NoSuchMethodException {
+        return new MapSchema();
+    }
 }

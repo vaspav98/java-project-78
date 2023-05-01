@@ -1,10 +1,10 @@
-package hexlet.code;
+package hexlet.code.schemes;
 
 import java.lang.reflect.Method;
 
 public class StringSchema extends BaseSchema {
 
-    protected void basicCheck() {
+    void basicCheck() {
         isValid = data instanceof String || data == null;
     }
 
@@ -20,7 +20,7 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    protected void requiredLogic() {
+    void requiredLogic() {
         isValid = data != null && !data.equals("");
     }
 
@@ -30,7 +30,7 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    protected void minLengthLogic() throws NoSuchMethodException {
+    void minLengthLogic() throws NoSuchMethodException {
         Method key = StringSchema.class.getDeclaredMethod("minLengthLogic");
         if (data == null) {
             isValid = false;
@@ -46,7 +46,7 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    protected void containsLogic() throws NoSuchMethodException {
+    void containsLogic() throws NoSuchMethodException {
         Method key = StringSchema.class.getDeclaredMethod("containsLogic");
         String substring = (String) restrictions.get(key);
         if (data == null) {
