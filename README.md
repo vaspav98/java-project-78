@@ -3,3 +3,5 @@
 [![Java CI](https://github.com/vaspav98/java-project-78/actions/workflows/my-check.yml/badge.svg)](https://github.com/vaspav98/java-project-78/actions/workflows/my-check.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/380f6a710d27bb3eca0d/maintainability)](https://codeclimate.com/github/vaspav98/java-project-78/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/380f6a710d27bb3eca0d/test_coverage)](https://codeclimate.com/github/vaspav98/java-project-78/test_coverage)
+# Валидатор данных
+Это третий проект професси Java-разработчик на Хекслете. Валидатор данных – библиотека, с помощью которой можно проверять корректность любых данных.

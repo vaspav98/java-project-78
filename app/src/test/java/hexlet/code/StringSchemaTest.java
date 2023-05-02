@@ -3,6 +3,8 @@ package hexlet.code;
 import hexlet.code.schemes.StringSchema;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringSchemaTest {
@@ -15,6 +17,7 @@ public class StringSchemaTest {
         assertThat(schema.isValid(5)).isFalse();
         assertThat(schema.isValid('a')).isFalse();
         assertThat(schema.isValid(true)).isFalse();
+        assertThat(schema.isValid(new HashMap<>())).isFalse();
         assertThat(schema.isValid("")).isTrue();
         assertThat(schema.isValid(null)).isTrue();
 

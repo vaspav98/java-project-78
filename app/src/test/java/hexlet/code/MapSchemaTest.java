@@ -4,6 +4,7 @@ import hexlet.code.schemes.BaseSchema;
 import hexlet.code.schemes.MapSchema;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -20,6 +21,7 @@ public class MapSchemaTest {
         assertThat(schema.isValid('a')).isFalse();
         assertThat(schema.isValid(true)).isFalse();
         assertThat(schema.isValid("hex")).isFalse();
+        assertThat(schema.isValid(new ArrayList<>())).isFalse();
         assertThat(schema.isValid(new TreeMap<>())).isTrue();
         assertThat(schema.isValid(null)).isTrue();
 

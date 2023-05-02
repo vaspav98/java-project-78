@@ -4,6 +4,7 @@ import hexlet.code.schemes.NumberSchema;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,6 +18,7 @@ public class NumberSchemaTest {
         assertThat(schema.isValid('a')).isFalse();
         assertThat(schema.isValid(true)).isFalse();
         assertThat(schema.isValid("hexlet")).isFalse();
+        assertThat(schema.isValid(new HashMap<>())).isFalse();
         assertThat(schema.isValid(5)).isTrue();
         assertThat(schema.isValid(null)).isTrue();
 
