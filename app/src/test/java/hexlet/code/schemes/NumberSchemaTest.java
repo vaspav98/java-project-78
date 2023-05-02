@@ -1,9 +1,7 @@
 package hexlet.code.schemes;
 
 import hexlet.code.Validator;
-import hexlet.code.schemes.NumberSchema;
 import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 

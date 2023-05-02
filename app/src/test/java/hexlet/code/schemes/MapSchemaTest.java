@@ -1,8 +1,6 @@
 package hexlet.code.schemes;
 
 import hexlet.code.Validator;
-import hexlet.code.schemes.BaseSchema;
-import hexlet.code.schemes.MapSchema;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
