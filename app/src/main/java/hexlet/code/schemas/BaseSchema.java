@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-import java.lang.reflect.InvocationTargetException;
+import lombok.SneakyThrows;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,8 @@ public class BaseSchema {
     Object data;
     Map<Method, Object> restrictions = new HashMap<>();
 
-    public boolean isValid(Object input) throws InvocationTargetException, IllegalAccessException {
+    @SneakyThrows
+    public boolean isValid(Object input) {
         this.data = input;
         isValid = true;
         for (Method restrictionMethod : restrictions.keySet()) {

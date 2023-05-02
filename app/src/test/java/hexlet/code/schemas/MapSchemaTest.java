@@ -2,7 +2,6 @@ package hexlet.code.schemas;
 
 import hexlet.code.Validator;
 import org.junit.jupiter.api.Test;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MapSchemaTest {
 
     @Test
-    public void testMapSchema() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void testMapSchema() {
         Validator validator = new Validator();
         MapSchema schema = validator.map();
 
@@ -39,7 +38,7 @@ public class MapSchemaTest {
     }
 
     @Test
-    public void testShapeOfMapSchema() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void testShapeOfMapSchema() {
         Validator validator = new Validator();
         MapSchema schema = validator.map();
 
@@ -78,18 +77,3 @@ public class MapSchemaTest {
         assertThat(schema.isValid(human4)).isTrue();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

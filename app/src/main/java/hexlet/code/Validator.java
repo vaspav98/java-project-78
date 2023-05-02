@@ -6,15 +6,15 @@ import hexlet.code.schemas.StringSchema;
 
 public class Validator {
 
-    public StringSchema string() throws NoSuchMethodException {
+    public StringSchema string() {
         return new StringSchema();
     }
 
-    public NumberSchema number() throws NoSuchMethodException {
+    public NumberSchema number() {
         return new NumberSchema();
     }
 
-    public MapSchema map() throws NoSuchMethodException {
+    public MapSchema map() {
         return new MapSchema();
     }
 }

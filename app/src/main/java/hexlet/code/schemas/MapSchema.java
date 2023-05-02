@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-import java.lang.reflect.InvocationTargetException;
+import lombok.SneakyThrows;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -10,13 +10,14 @@ public class MapSchema extends BaseSchema {
         isValid = data instanceof Map || data == null;
     }
 
-    public MapSchema() throws NoSuchMethodException {
+    @SneakyThrows
+    public MapSchema() {
         Method method = MapSchema.class.getDeclaredMethod("basicCheck");
         restrictions.put(method, new Object());
     }
 
-
-    public MapSchema required() throws NoSuchMethodException {
+    @SneakyThrows
+    public MapSchema required() {
         Method method = MapSchema.class.getDeclaredMethod("requiredLogic");
         restrictions.put(method, new Object());
         return this;
@@ -26,13 +27,15 @@ public class MapSchema extends BaseSchema {
         isValid = data != null;
     }
 
-    public MapSchema sizeof(int size) throws NoSuchMethodException {
+    @SneakyThrows
+    public MapSchema sizeof(int size) {
         Method method = MapSchema.class.getDeclaredMethod("sizeofLogic");
         restrictions.put(method, size);
         return this;
     }
 
-    void sizeofLogic() throws NoSuchMethodException {
+    @SneakyThrows
+    void sizeofLogic() {
         Method key = MapSchema.class.getDeclaredMethod("sizeofLogic");
         int size = (int) restrictions.get(key);
         if (data == null) {
@@ -43,13 +46,15 @@ public class MapSchema extends BaseSchema {
         }
     }
 
-    public MapSchema shape(Map<String, BaseSchema> schemes) throws NoSuchMethodException {
+    @SneakyThrows
+    public MapSchema shape(Map<String, BaseSchema> schemes) {
         Method method = MapSchema.class.getDeclaredMethod("shapeLogic");
         restrictions.put(method, schemes);
         return this;
     }
 
-    void shapeLogic() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    @SneakyThrows
+    void shapeLogic() {
         Method method = MapSchema.class.getDeclaredMethod("shapeLogic");
         Map<String, BaseSchema> schemes = (Map<String, BaseSchema>) restrictions.get(method);
         Map map = (Map) data;

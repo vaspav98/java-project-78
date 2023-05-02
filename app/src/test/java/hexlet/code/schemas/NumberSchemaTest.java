@@ -2,14 +2,13 @@ package hexlet.code.schemas;
 
 import hexlet.code.Validator;
 import org.junit.jupiter.api.Test;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberSchemaTest {
 
     @Test
-    public void testNumberSchema() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void testNumberSchema() {
         Validator validator = new Validator();
         NumberSchema schema = validator.number();
 
@@ -36,7 +35,7 @@ public class NumberSchemaTest {
     }
 
     @Test
-    public void testNumberSchema2() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void testNumberSchema2() {
         Validator validator = new Validator();
         NumberSchema schema = validator.number();
 

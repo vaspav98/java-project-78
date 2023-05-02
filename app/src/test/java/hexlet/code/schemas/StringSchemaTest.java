@@ -2,14 +2,13 @@ package hexlet.code.schemas;
 
 import hexlet.code.Validator;
 import org.junit.jupiter.api.Test;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringSchemaTest {
 
     @Test
-    public void testStringSchema() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void testStringSchema() {
         Validator validator = new Validator();
         StringSchema schema = validator.string();
 
@@ -45,7 +44,7 @@ public class StringSchemaTest {
     }
 
     @Test
-    public void testStringSchema2() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void testStringSchema2() {
         Validator validator = new Validator();
         StringSchema schema = validator.string();
 
@@ -59,21 +58,4 @@ public class StringSchemaTest {
         assertThat(schema.isValid("dfe")).isFalse();
         assertThat(schema.isValid("dfee")).isTrue();
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

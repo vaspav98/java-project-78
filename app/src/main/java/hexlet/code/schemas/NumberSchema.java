@@ -1,5 +1,6 @@
 package hexlet.code.schemas;
 
+import lombok.SneakyThrows;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +11,14 @@ public class NumberSchema extends BaseSchema {
         isValid = data instanceof Integer || data == null;
     }
 
-    public NumberSchema() throws NoSuchMethodException {
+    @SneakyThrows
+    public NumberSchema() {
         Method method = NumberSchema.class.getDeclaredMethod("basicCheck");
         restrictions.put(method, new Object());
     }
 
-
-    public NumberSchema required() throws NoSuchMethodException {
+    @SneakyThrows
+    public NumberSchema required() {
         Method method = NumberSchema.class.getDeclaredMethod("requiredLogic");
         restrictions.put(method, new Object());
         return this;
@@ -26,7 +28,8 @@ public class NumberSchema extends BaseSchema {
         isValid = data != null;
     }
 
-    public NumberSchema positive() throws NoSuchMethodException {
+    @SneakyThrows
+    public NumberSchema positive() {
         Method method = NumberSchema.class.getDeclaredMethod("positiveLogic");
         restrictions.put(method, new Object());
         return this;
@@ -36,14 +39,16 @@ public class NumberSchema extends BaseSchema {
         isValid = data == null || (int) data > 0;
     }
 
-    public NumberSchema range(int min, int max) throws NoSuchMethodException {
+    @SneakyThrows
+    public NumberSchema range(int min, int max) {
         Method method = NumberSchema.class.getDeclaredMethod("rangeLogic");
         List<Integer> range = new ArrayList<>(List.of(min, max));
         restrictions.put(method, range);
         return this;
     }
 
-    void rangeLogic() throws NoSuchMethodException {
+    @SneakyThrows
+    void rangeLogic() {
         Method key = NumberSchema.class.getDeclaredMethod("rangeLogic");
         List<Integer> range = (List<Integer>) restrictions.get(key);
         int min = range.get(0);
