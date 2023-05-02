@@ -5,58 +5,58 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberSchema extends BaseSchema {
+public final class NumberSchema extends BaseSchema {
 
     void basicCheck() {
-        isValid = data instanceof Integer || data == null;
+        setValid(getData() instanceof Integer || getData() == null);
     }
 
     @SneakyThrows
     public NumberSchema() {
         Method method = NumberSchema.class.getDeclaredMethod("basicCheck");
-        restrictions.put(method, new Object());
+        getRestrictions().put(method, new Object());
     }
 
     @SneakyThrows
     public NumberSchema required() {
         Method method = NumberSchema.class.getDeclaredMethod("requiredLogic");
-        restrictions.put(method, new Object());
+        getRestrictions().put(method, new Object());
         return this;
     }
 
     void requiredLogic() {
-        isValid = data != null;
+        setValid(getData() != null);
     }
 
     @SneakyThrows
     public NumberSchema positive() {
         Method method = NumberSchema.class.getDeclaredMethod("positiveLogic");
-        restrictions.put(method, new Object());
+        getRestrictions().put(method, new Object());
         return this;
     }
 
     void positiveLogic() {
-        isValid = data == null || (int) data > 0;
+        setValid(getData() == null || (int) getData() > 0);
     }
 
     @SneakyThrows
     public NumberSchema range(int min, int max) {
         Method method = NumberSchema.class.getDeclaredMethod("rangeLogic");
         List<Integer> range = new ArrayList<>(List.of(min, max));
-        restrictions.put(method, range);
+        getRestrictions().put(method, range);
         return this;
     }
 
     @SneakyThrows
     void rangeLogic() {
         Method key = NumberSchema.class.getDeclaredMethod("rangeLogic");
-        List<Integer> range = (List<Integer>) restrictions.get(key);
+        List<Integer> range = (List<Integer>) getRestrictions().get(key);
         int min = range.get(0);
         int max = range.get(1);
-        if (data == null) {
-            isValid = false;
+        if (getData() == null) {
+            setValid(false);
         } else {
-            isValid = (int) data >= min && (int) data <= max;
+            setValid((int) getData() >= min && (int) getData() <= max);
         }
     }
 }
