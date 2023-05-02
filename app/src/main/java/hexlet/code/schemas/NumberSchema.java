@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.schemas;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
