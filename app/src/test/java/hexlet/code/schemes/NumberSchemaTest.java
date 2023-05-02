@@ -1,5 +1,6 @@
-package hexlet.code;
+package hexlet.code.schemes;
 
+import hexlet.code.Validator;
 import hexlet.code.schemes.NumberSchema;
 import org.junit.jupiter.api.Test;
 

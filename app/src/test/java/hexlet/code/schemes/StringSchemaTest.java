@@ -1,5 +1,6 @@
-package hexlet.code;
+package hexlet.code.schemes;
 
+import hexlet.code.Validator;
 import hexlet.code.schemes.StringSchema;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
