@@ -1,10 +1,8 @@
-package hexlet.code.schemes;
+package hexlet.code;
 
-import hexlet.code.Validator;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberSchemaTest {

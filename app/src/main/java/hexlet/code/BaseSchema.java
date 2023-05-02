@@ -1,4 +1,4 @@
-package hexlet.code.schemes;
+package hexlet.code;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
