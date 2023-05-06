@@ -38,7 +38,6 @@ public final class MapSchema extends BaseSchema {
                     for (Map.Entry<String, BaseSchema> entry : schemes.entrySet()) {
                         Object key = entry.getKey();
                         BaseSchema schema = entry.getValue();
-                        System.out.println("schema: " + schema);
                         if (!map.containsKey(key)) return false;
                         if (!schema.isValid(map.get(key))) return false;
                     }

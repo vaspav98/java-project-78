@@ -17,7 +17,6 @@ public class BaseSchema {
     public final boolean isValid(Object input) {
         this.data = input;
         isValid = true;
-        System.out.println("input data - " + data);
         for (String restrictionName : restrictions.keySet()) {
             if (!isValid) {
                 return false;
@@ -33,14 +32,5 @@ public class BaseSchema {
 
     protected final void addCheck(String name, Predicate validate) {
         restrictions.put(name, validate);
-    }
-
-    @Override
-    public String toString() {
-        return "BaseSchema{" +
-                "isValid=" + isValid +
-                ", data=" + data +
-                ", restrictions=" + restrictions +
-                '}';
     }
 }
