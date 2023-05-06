@@ -39,7 +39,7 @@ public final class MapSchema extends BaseSchema {
                         Object key = entry.getKey();
                         BaseSchema schema = entry.getValue();
                         if (!map.containsKey(key)) {
-                            return false ;
+                            return false;
                         }
                         if (!schema.isValid(map.get(key))) {
                             return false;
