@@ -2,10 +2,9 @@ package hexlet.code.schemas;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 
 @Setter
 @Getter
@@ -13,22 +12,35 @@ public class BaseSchema {
 
     private boolean isValid = true;
     private Object data;
-    private Map<Method, Object> restrictions = new HashMap<>();
+    private Map<String, Predicate> restrictions = new HashMap<>();
 
-    @SneakyThrows
     public final boolean isValid(Object input) {
         this.data = input;
         isValid = true;
-        for (Method restrictionMethod : restrictions.keySet()) {
+        System.out.println("input data - " + data);
+        for (String restrictionName : restrictions.keySet()) {
             if (!isValid) {
                 return false;
             }
-            restrictionMethod.invoke(this);
+            isValid = restrictions.get(restrictionName).test(data);
         }
         return isValid;
     }
 
-    public final boolean getValid() {
+    protected final boolean getValid() {
         return this.isValid;
+    }
+
+    protected final void addCheck(String name, Predicate validate) {
+        restrictions.put(name, validate);
+    }
+
+    @Override
+    public String toString() {
+        return "BaseSchema{" +
+                "isValid=" + isValid +
+                ", data=" + data +
+                ", restrictions=" + restrictions +
+                '}';
     }
 }
