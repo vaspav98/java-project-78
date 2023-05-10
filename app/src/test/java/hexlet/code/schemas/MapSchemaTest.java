@@ -24,10 +24,10 @@ public class MapSchemaTest {
         assertThat(schema.isValid(null)).isTrue();
 
         schema.required();
+        assertThat(schema.isValid(null)).isFalse();
+
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
-
-        assertThat(schema.isValid(null)).isFalse();
         assertThat(schema.isValid(data)).isTrue();
 
         schema.sizeof(2);

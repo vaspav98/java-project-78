@@ -6,20 +6,18 @@ public final class MapSchema extends BaseSchema {
 
     public MapSchema() {
         addCheck(
-                "basicCheck",
-                value -> value instanceof Map || value == null
+                "required",
+                value -> value instanceof Map
         );
     }
 
     public MapSchema required() {
-        addCheck(
-                "required",
-                value -> value != null
-        );
+        super.required = true;
         return this;
     }
 
     public MapSchema sizeof(int size) {
+        super.required = true;
         addCheck(
                 "sizeof",
                 value -> {
@@ -31,6 +29,7 @@ public final class MapSchema extends BaseSchema {
     }
 
     public MapSchema shape(Map<String, BaseSchema> schemes) {
+        super.required = true;
         addCheck(
                 "shape",
                 value -> {

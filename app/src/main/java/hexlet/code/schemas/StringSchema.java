@@ -4,31 +4,30 @@ public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
         addCheck(
-                "basicCheck",
-                value -> value instanceof String || value == null
+                "required",
+                value -> value instanceof String
         );
     }
 
     public StringSchema required() {
-        addCheck(
-                "required",
-                value -> value != null && !value.equals("")
-        );
+        super.required = true;
         return this;
     }
 
     public StringSchema minLength(int length) {
+        super.required = true;
         addCheck(
                 "minLength",
-                value -> value != null && value.toString().length() >= length
+                value -> value.toString().length() >= length
         );
         return this;
     }
 
     public StringSchema contains(String substring) {
+        super.required = true;
         addCheck(
                 "contains",
-                value -> value != null && value.toString().contains(substring)
+                value -> value.toString().contains(substring)
         );
         return this;
     }
