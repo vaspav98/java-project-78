@@ -1,20 +1,17 @@
 package hexlet.code.schemas;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
 public class BaseSchema {
 
     private boolean isValid = true;
-    private Map<String, Predicate> restrictions = new HashMap<>();
+    private Map<String, Predicate> restrictions = new LinkedHashMap<>();
     protected boolean required;
 
     public final boolean isValid(Object data) {
-        if (data == null) {
-            return !required;
-        }
-        if (data instanceof String && data.equals("")) {
+        if (data == null || data.equals("")) {
             return !required;
         }
         isValid = true;
