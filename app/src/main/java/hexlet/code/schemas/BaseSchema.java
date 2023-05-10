@@ -11,7 +11,10 @@ public class BaseSchema {
     protected boolean required;
 
     public final boolean isValid(Object data) {
-        if (data == null || data.equals("")) {
+        if (data == null) {
+            return !required;
+        }
+        if (data instanceof String && data.equals("")) {
             return !required;
         }
         isValid = true;
